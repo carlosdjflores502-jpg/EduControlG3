@@ -1,0 +1,16 @@
+<header class="app-header">
+  <div>
+    <h1 class="app-brand">EduControl G3</h1>
+    <p class="app-subtitle">Sistema de Control Acad&eacute;mico</p>
+  </div>
+
+  <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+    <div class="header-user">
+      <div class="header-user-info">
+        <strong><%= currentUser.nombre %></strong>
+        <span><%= currentUser.rol %></span>
+      </div>
+      <a href="/logout" class="btn btn-sm btn-outline-danger">Cerrar sesion</a>
+    </div>
+  <% } %>
+</header>

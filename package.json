@@ -1,0 +1,28 @@
+{
+  "name": "educontrolg3",
+  "version": "1.0.0",
+  "description": "Sistema de Control Academico para el Grupo 3.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "control-academico",
+    "express",
+    "ejs",
+    "mvc"
+  ],
+  "author": "Grupo 3",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.1",
+    "mysql2": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

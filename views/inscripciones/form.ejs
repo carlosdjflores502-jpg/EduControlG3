@@ -1,0 +1,42 @@
+<div class="col-12 col-md-6">
+  <label for="id_alumno" class="form-label">Alumno</label>
+  <select class="form-select" id="id_alumno" name="id_alumno" required>
+    <option value="">Seleccione un alumno</option>
+    <% alumnos.forEach((alumno) => { %>
+      <option value="<%= alumno.id_alumno %>" <%= String(inscripcion.id_alumno) === String(alumno.id_alumno) ? 'selected' : '' %>>
+        <%= alumno.carnet %> - <%= alumno.nombre %> <%= alumno.apellido %>
+      </option>
+    <% }) %>
+  </select>
+</div>
+
+<div class="col-12 col-md-6">
+  <label for="id_curso" class="form-label">Curso</label>
+  <select class="form-select" id="id_curso" name="id_curso" required>
+    <option value="">Seleccione un curso</option>
+    <% cursos.forEach((curso) => { %>
+      <option value="<%= curso.id_curso %>" <%= String(inscripcion.id_curso) === String(curso.id_curso) ? 'selected' : '' %>>
+        <%= curso.codigo %> - <%= curso.nombre %>
+      </option>
+    <% }) %>
+  </select>
+</div>
+
+<div class="col-12 col-md-6">
+  <label for="fecha_inscripcion" class="form-label">Fecha de inscripcion</label>
+  <input type="date" class="form-control" id="fecha_inscripcion" name="fecha_inscripcion" value="<%= inscripcion.fecha_inscripcion %>" required>
+</div>
+
+<div class="col-12 col-md-6">
+  <label for="estado" class="form-label">Estado</label>
+  <select class="form-select" id="estado" name="estado" required>
+    <% estados.forEach((estado) => { %>
+      <option value="<%= estado %>" <%= inscripcion.estado === estado ? 'selected' : '' %>><%= estado %></option>
+    <% }) %>
+  </select>
+</div>
+
+<div class="col-12 form-actions">
+  <button type="submit" class="btn btn-primary"><%= submitText %></button>
+  <a href="/inscripciones" class="btn btn-outline-secondary">Cancelar</a>
+</div>

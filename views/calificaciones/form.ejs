@@ -1,0 +1,37 @@
+<div class="col-12">
+  <label for="id_inscripcion" class="form-label">Inscripcion activa</label>
+  <select class="form-select" id="id_inscripcion" name="id_inscripcion" required>
+    <option value="">Seleccione una inscripcion</option>
+    <% inscripciones.forEach((inscripcion) => { %>
+      <option value="<%= inscripcion.id_inscripcion %>" <%= String(calificacion.id_inscripcion) === String(inscripcion.id_inscripcion) ? 'selected' : '' %>>
+        <%= inscripcion.alumno_carnet %> - <%= inscripcion.alumno_nombre %> / <%= inscripcion.curso_codigo %> - <%= inscripcion.curso_nombre %>
+      </option>
+    <% }) %>
+  </select>
+</div>
+
+<div class="col-12 col-md-6">
+  <label for="nota_parcial" class="form-label">Nota parcial</label>
+  <input type="number" class="form-control" id="nota_parcial" name="nota_parcial" min="0" max="100" step="0.01" value="<%= calificacion.nota_parcial %>" required>
+</div>
+
+<div class="col-12 col-md-6">
+  <label for="nota_final" class="form-label">Nota final</label>
+  <input type="number" class="form-control" id="nota_final" name="nota_final" min="0" max="100" step="0.01" value="<%= calificacion.nota_final %>" required>
+</div>
+
+<div class="col-12">
+  <label for="observaciones" class="form-label">Observaciones</label>
+  <textarea class="form-control" id="observaciones" name="observaciones" rows="4"><%= calificacion.observaciones || '' %></textarea>
+</div>
+
+<div class="col-12">
+  <div class="form-hint">
+    El promedio y resultado se calculan automaticamente al guardar.
+  </div>
+</div>
+
+<div class="col-12 form-actions">
+  <button type="submit" class="btn btn-primary"><%= submitText %></button>
+  <a href="/calificaciones" class="btn btn-outline-secondary">Cancelar</a>
+</div>

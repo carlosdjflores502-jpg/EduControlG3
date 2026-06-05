@@ -1,0 +1,36 @@
+<aside class="app-sidebar">
+  <div class="sidebar-title">
+    <span class="sidebar-mark">EC</span>
+    <div>
+      <strong>EduControl</strong>
+      <small>Grupo 3</small>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav" aria-label="Menu principal">
+    <a class="sidebar-link <%= activePage === 'dashboard' ? 'active' : '' %>" href="/">
+      <span class="sidebar-icon">D</span>
+      Dashboard
+    </a>
+    <a class="sidebar-link <%= activePage === 'alumnos' ? 'active' : '' %>" href="/alumnos">
+      <span class="sidebar-icon">A</span>
+      Alumnos
+    </a>
+    <a class="sidebar-link <%= activePage === 'cursos' ? 'active' : '' %>" href="/cursos">
+      <span class="sidebar-icon">C</span>
+      Cursos
+    </a>
+    <a class="sidebar-link <%= activePage === 'inscripciones' ? 'active' : '' %>" href="/inscripciones">
+      <span class="sidebar-icon">I</span>
+      Inscripciones
+    </a>
+    <a class="sidebar-link <%= activePage === 'calificaciones' ? 'active' : '' %>" href="/calificaciones">
+      <span class="sidebar-icon">N</span>
+      Calificaciones
+    </a>
+    <a class="sidebar-link <%= activePage === 'reportes' ? 'active' : '' %>" href="/reportes">
+      <span class="sidebar-icon">R</span>
+      Reportes
+    </a>
+  </nav>
+</aside>

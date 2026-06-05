@@ -1,0 +1,42 @@
+<div class="col-12 col-md-6">
+  <label for="carnet" class="form-label">Carnet</label>
+  <input type="text" class="form-control" id="carnet" name="carnet" value="<%= alumno.carnet %>" required>
+</div>
+
+<div class="col-12 col-md-6">
+  <label for="correo" class="form-label">Correo</label>
+  <input type="email" class="form-control" id="correo" name="correo" value="<%= alumno.correo %>" required>
+</div>
+
+<div class="col-12 col-md-6">
+  <label for="nombre" class="form-label">Nombre</label>
+  <input type="text" class="form-control" id="nombre" name="nombre" value="<%= alumno.nombre %>" required>
+</div>
+
+<div class="col-12 col-md-6">
+  <label for="apellido" class="form-label">Apellido</label>
+  <input type="text" class="form-control" id="apellido" name="apellido" value="<%= alumno.apellido %>" required>
+</div>
+
+<div class="col-12 col-md-6">
+  <label for="telefono" class="form-label">Telefono</label>
+  <input type="text" class="form-control" id="telefono" name="telefono" value="<%= alumno.telefono || '' %>">
+</div>
+
+<div class="col-12 col-md-6">
+  <label for="carrera" class="form-label">Carrera</label>
+  <input type="text" class="form-control" id="carrera" name="carrera" value="<%= alumno.carrera %>" required>
+</div>
+
+<div class="col-12 col-md-6">
+  <label for="estado" class="form-label">Estado</label>
+  <select class="form-select" id="estado" name="estado">
+    <option value="Activo" <%= alumno.estado === 'Activo' ? 'selected' : '' %>>Activo</option>
+    <option value="Inactivo" <%= alumno.estado === 'Inactivo' ? 'selected' : '' %>>Inactivo</option>
+  </select>
+</div>
+
+<div class="col-12 form-actions">
+  <button type="submit" class="btn btn-primary"><%= submitText %></button>
+  <a href="/alumnos" class="btn btn-outline-secondary">Cancelar</a>
+</div>
