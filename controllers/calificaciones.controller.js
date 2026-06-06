@@ -112,9 +112,10 @@ const listCalificaciones = async (req, res) => {
 
 const showCreateForm = async (req, res) => {
   try {
-    return renderCreateForm(res, emptyCalificacion, []);
+    return await renderCreateForm(res, emptyCalificacion, []);
   } catch (error) {
-    return res.redirect(`/calificaciones?error=${encodeURIComponent(`No se pudo cargar el formulario. Detalle: ${error.message}`)}`);
+    const errorMessage = `No se pudo cargar el formulario. Detalle: ${error.message}`;
+    return res.redirect(`/calificaciones?error=${encodeURIComponent(errorMessage)}`);
   }
 };
 
@@ -134,14 +135,14 @@ const createCalificacion = async (req, res) => {
     }
 
     if (errors.length > 0) {
-      return renderCreateForm(res, calificacion, errors);
+      return await renderCreateForm(res, calificacion, errors);
     }
 
     await calificacionesModel.createCalificacion(buildCalificacionToSave(calificacion));
     return res.redirect('/calificaciones?success=created');
   } catch (error) {
     errors.push(`No se pudo registrar la calificacion. Detalle: ${error.message}`);
-    return renderCreateForm(res, calificacion, errors);
+    return await renderCreateForm(res, calificacion, errors);
   }
 };
 
@@ -153,9 +154,10 @@ const showEditForm = async (req, res) => {
       return res.redirect('/calificaciones?error=Calificacion no encontrada.');
     }
 
-    return renderEditForm(res, calificacion, []);
+    return await renderEditForm(res, calificacion, []);
   } catch (error) {
-    return res.redirect(`/calificaciones?error=${encodeURIComponent(`No se pudo cargar la calificacion. Detalle: ${error.message}`)}`);
+    const errorMessage = `No se pudo cargar la calificacion. Detalle: ${error.message}`;
+    return res.redirect(`/calificaciones?error=${encodeURIComponent(errorMessage)}`);
   }
 };
 
@@ -177,7 +179,7 @@ const updateCalificacion = async (req, res) => {
     }
 
     if (errors.length > 0) {
-      return renderEditForm(
+      return await renderEditForm(
         res,
         {
           id_calificacion: idCalificacion,
@@ -192,7 +194,7 @@ const updateCalificacion = async (req, res) => {
   } catch (error) {
     errors.push(`No se pudo actualizar la calificacion. Detalle: ${error.message}`);
 
-    return renderEditForm(
+    return await renderEditForm(
       res,
       {
         id_calificacion: idCalificacion,
@@ -208,7 +210,8 @@ const deleteCalificacion = async (req, res) => {
     await calificacionesModel.deleteCalificacion(req.params.id);
     return res.redirect('/calificaciones?success=deleted');
   } catch (error) {
-    return res.redirect(`/calificaciones?error=${encodeURIComponent(`No se pudo eliminar la calificacion. Detalle: ${error.message}`)}`);
+    const errorMessage = `No se pudo eliminar la calificacion. Detalle: ${error.message}`;
+    return res.redirect(`/calificaciones?error=${encodeURIComponent(errorMessage)}`);
   }
 };
 

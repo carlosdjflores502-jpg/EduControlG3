@@ -124,7 +124,8 @@ const showEditForm = async (req, res) => {
       errors: []
     });
   } catch (error) {
-    return res.redirect(`/cursos?error=${encodeURIComponent(`No se pudo cargar el curso. Detalle: ${error.message}`)}`);
+    const errorMessage = `No se pudo cargar el curso. Detalle: ${error.message}`;
+    return res.redirect(`/cursos?error=${encodeURIComponent(errorMessage)}`);
   }
 };
 
@@ -168,7 +169,8 @@ const deleteCurso = async (req, res) => {
     await cursosModel.deleteCurso(req.params.id);
     return res.redirect('/cursos?success=deleted');
   } catch (error) {
-    return res.redirect(`/cursos?error=${encodeURIComponent(`No se pudo eliminar el curso. Detalle: ${error.message}`)}`);
+    const errorMessage = `No se pudo eliminar el curso. Detalle: ${error.message}`;
+    return res.redirect(`/cursos?error=${encodeURIComponent(errorMessage)}`);
   }
 };
 

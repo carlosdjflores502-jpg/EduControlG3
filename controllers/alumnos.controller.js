@@ -116,7 +116,8 @@ const showEditForm = async (req, res) => {
       errors: []
     });
   } catch (error) {
-    return res.redirect(`/alumnos?error=${encodeURIComponent(`No se pudo cargar el alumno. Detalle: ${error.message}`)}`);
+    const errorMessage = `No se pudo cargar el alumno. Detalle: ${error.message}`;
+    return res.redirect(`/alumnos?error=${encodeURIComponent(errorMessage)}`);
   }
 };
 
@@ -160,7 +161,8 @@ const deleteAlumno = async (req, res) => {
     await alumnosModel.deleteAlumno(req.params.id);
     return res.redirect('/alumnos?success=deleted');
   } catch (error) {
-    return res.redirect(`/alumnos?error=${encodeURIComponent(`No se pudo eliminar el alumno. Detalle: ${error.message}`)}`);
+    const errorMessage = `No se pudo eliminar el alumno. Detalle: ${error.message}`;
+    return res.redirect(`/alumnos?error=${encodeURIComponent(errorMessage)}`);
   }
 };
 

@@ -111,9 +111,10 @@ const listInscripciones = async (req, res) => {
 
 const showCreateForm = async (req, res) => {
   try {
-    return renderCreateForm(res, emptyInscripcion, []);
+    return await renderCreateForm(res, emptyInscripcion, []);
   } catch (error) {
-    return res.redirect(`/inscripciones?error=${encodeURIComponent(`No se pudo cargar el formulario. Detalle: ${error.message}`)}`);
+    const errorMessage = `No se pudo cargar el formulario. Detalle: ${error.message}`;
+    return res.redirect(`/inscripciones?error=${encodeURIComponent(errorMessage)}`);
   }
 };
 
@@ -134,14 +135,14 @@ const createInscripcion = async (req, res) => {
     }
 
     if (errors.length > 0) {
-      return renderCreateForm(res, inscripcion, errors);
+      return await renderCreateForm(res, inscripcion, errors);
     }
 
     await inscripcionesModel.createInscripcion(inscripcion);
     return res.redirect('/inscripciones?success=created');
   } catch (error) {
     errors.push(`No se pudo registrar la inscripcion. Detalle: ${error.message}`);
-    return renderCreateForm(res, inscripcion, errors);
+    return await renderCreateForm(res, inscripcion, errors);
   }
 };
 
@@ -153,9 +154,10 @@ const showEditForm = async (req, res) => {
       return res.redirect('/inscripciones?error=Inscripcion no encontrada.');
     }
 
-    return renderEditForm(res, inscripcion, []);
+    return await renderEditForm(res, inscripcion, []);
   } catch (error) {
-    return res.redirect(`/inscripciones?error=${encodeURIComponent(`No se pudo cargar la inscripcion. Detalle: ${error.message}`)}`);
+    const errorMessage = `No se pudo cargar la inscripcion. Detalle: ${error.message}`;
+    return res.redirect(`/inscripciones?error=${encodeURIComponent(errorMessage)}`);
   }
 };
 
@@ -178,7 +180,7 @@ const updateInscripcion = async (req, res) => {
     }
 
     if (errors.length > 0) {
-      return renderEditForm(
+      return await renderEditForm(
         res,
         {
           id_inscripcion: idInscripcion,
@@ -193,7 +195,7 @@ const updateInscripcion = async (req, res) => {
   } catch (error) {
     errors.push(`No se pudo actualizar la inscripcion. Detalle: ${error.message}`);
 
-    return renderEditForm(
+    return await renderEditForm(
       res,
       {
         id_inscripcion: idInscripcion,
@@ -209,7 +211,8 @@ const deleteInscripcion = async (req, res) => {
     await inscripcionesModel.deleteInscripcion(req.params.id);
     return res.redirect('/inscripciones?success=deleted');
   } catch (error) {
-    return res.redirect(`/inscripciones?error=${encodeURIComponent(`No se pudo eliminar la inscripcion. Detalle: ${error.message}`)}`);
+    const errorMessage = `No se pudo eliminar la inscripcion. Detalle: ${error.message}`;
+    return res.redirect(`/inscripciones?error=${encodeURIComponent(errorMessage)}`);
   }
 };
 
