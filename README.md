@@ -57,3 +57,5 @@ En EduControl G3 se analizara el codigo del proyecto Node.js, Express, EJS y la 
 - Deuda tecnica: esfuerzo estimado para corregir problemas de calidad.
 
 El analisis servira para documentar hallazgos criticos del proyecto. Mas adelante, la refactorizacion de al menos tres hallazgos se documentara como antes y despues.
+
+Actualización para nuevo análisis de SonarCloud.
